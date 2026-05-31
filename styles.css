@@ -5,7 +5,5 @@
 
 .box {
     box-sizing: border-box;
-    width: 960px;
-    height: 960px;
     border: 5px solid black;
 }

@@ -1,5 +1,6 @@
-let gridSize = 4;
-let containerSize = gridSize * 960;
+let gridSize = 10;
+let containerSize = 750;
+let boxSize = containerSize / gridSize;
 
 const container = document.querySelector('#container');
 
@@ -10,6 +11,8 @@ for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
         const box = document.createElement('div');
         box.classList.add('box');
+        box.style.width = `${boxSize}px`;
+        box.style.height = `${boxSize}px`;
         container.appendChild(box);
     }
 }
