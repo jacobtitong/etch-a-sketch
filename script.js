@@ -16,3 +16,11 @@ for (let i = 0; i < gridSize; i++) {
         container.appendChild(box);
     }
 }
+
+const allBoxes = document.querySelectorAll('.box');
+
+allBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+        box.classList.toggle('hoveredBox');
+    })
+})
