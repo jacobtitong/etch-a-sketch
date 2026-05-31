@@ -6,7 +6,7 @@ newGridButton.addEventListener('click', () => {
 function createGrid() {
     const container = document.querySelector('#container');
     container.innerHTML = '';
-    let gridSize = prompt("Enter Grid Size", 10);
+    let gridSize = getGridSize();
 
     let containerSize = createContainer(gridSize, container);
 
@@ -18,6 +18,14 @@ function createGrid() {
             box.classList.add('hoveredBox');
         })
     })
+}
+
+function getGridSize() {
+    let gridSize;
+    do {
+        gridSize = prompt("Enter Grid Size (Max: 100)", 10);
+    } while (gridSize > 100);
+    return gridSize;
 }
 
 function createBoxes(gridSize, containerSize, container) {
