@@ -1,26 +1,43 @@
-let gridSize = 10;
-let containerSize = 750;
-let boxSize = containerSize / gridSize;
+const newGridButton = document.querySelector('#newGridButton');
+newGridButton.addEventListener('click', () => {
+    createGrid();
+})
 
-const container = document.querySelector('#container');
+function createGrid() {
+    const container = document.querySelector('#container');
+    container.innerHTML = '';
+    let gridSize = prompt("Enter Grid Size", 10);
 
-container.style.width = `${containerSize}px`;
-container.style.height = `${containerSize}px`;
+    let containerSize = createContainer(gridSize, container);
 
-for (let i = 0; i < gridSize; i++) {
-    for (let j = 0; j < gridSize; j++) {
-        const box = document.createElement('div');
-        box.classList.add('box');
-        box.style.width = `${boxSize}px`;
-        box.style.height = `${boxSize}px`;
-        container.appendChild(box);
+    createBoxes(gridSize, containerSize, container);
+
+    const allBoxes = document.querySelectorAll('.box');
+    allBoxes.forEach(box => {
+        box.addEventListener('mouseenter', () => {
+            box.classList.add('hoveredBox');
+        })
+    })
+}
+
+function createBoxes(gridSize, containerSize, container) {
+    let boxSize = containerSize / gridSize;
+    for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+            const box = document.createElement('div');
+            box.classList.add('box');
+            box.style.width = `${boxSize}px`;
+            box.style.height = `${boxSize}px`;
+            container.appendChild(box);
+        }
     }
 }
 
-const allBoxes = document.querySelectorAll('.box');
+function createContainer(gridSize, container) {
+    let containerSize = 750;
 
-allBoxes.forEach(box => {
-    box.addEventListener('click', () => {
-        box.classList.toggle('hoveredBox');
-    })
-})
+    container.style.width = `${containerSize}px`;
+    container.style.height = `${containerSize}px`;
+
+    return containerSize;
+}
