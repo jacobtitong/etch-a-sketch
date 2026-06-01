@@ -15,7 +15,7 @@ function createGrid() {
     const allBoxes = document.querySelectorAll('.box');
     allBoxes.forEach(box => {
         box.addEventListener('mouseenter', () => {
-            box.classList.add('hoveredBox');
+            box.style.backgroundColor = `rgb(${getColor()}, ${getColor()}, ${getColor()})`;
         })
     })
 }
@@ -48,4 +48,9 @@ function createContainer(gridSize, container) {
     container.style.height = `${containerSize}px`;
 
     return containerSize;
+}
+
+function getColor() {
+    let color = Math.floor(Math.random() * 255);
+    return color;
 }
